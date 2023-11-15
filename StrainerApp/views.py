@@ -4,7 +4,8 @@ import json
 from django.http import JsonResponse
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import precision_score, recall_score, roc_auc_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix
 from imblearn.over_sampling import SMOTE
 from django.template.response import TemplateResponse
 import time
@@ -22,8 +23,11 @@ def procesar_prediccion(datos_del_formulario):
     smote = SMOTE(random_state=42)
     X_resampled, y_resampled = smote.fit_resample(X, y)
 
-    clf = RandomForestClassifier()
-    clf.fit(X_resampled.values, y_resampled.values)
+    X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
+
+    clf = RandomForestClassifier(random_state=42)
+    clf.fit(X_train, y_train)
+
 
     nuevo_dato_df = pd.DataFrame([datos_del_formulario])
     probabilidades = clf.predict_proba(nuevo_dato_df)
@@ -57,11 +61,9 @@ def procesar_formulario(request):
     if request.method == 'POST':
         data = request.POST.dict()
         data.pop('csrfmiddlewaretoken')
-        print(data)
 
         # Puedes imprimir los datos para verificar
         probabilidad = procesar_prediccion(data)
-        print(probabilidad)
 
         # Por ahora, devolvemos un valor de ejemplo
 
