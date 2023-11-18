@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #F0F3FA;
+}
+
+.cabecera {
+    width: auto;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.70);
+    color: white;
+    font-family: 'Kurale', serif;
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.menu {
+    width: 100%;
+    height: 46px;
+    background: rgba(224, 225, 224, 0.70);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contenido {
+    width: 100%;
+    height: 100vh;
+    background: #F9F9FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+#formulario-container {
+    background-color: #E0E1E0B2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 0 20px; /* Agrega relleno en los lados */
+}
+
+
+.center-container {
+    width: 80%;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%; /* Ajusta según tu preferencia */
+    max-height: 80vh; /* Altura máxima del contenedor del formulario */
+    overflow: hidden;
+    background-image: url('https://i.imgur.com/WksqiEJ.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+
+
+#mensaje-container {
+    border-radius: 21.513px 21.513px 0px 0px;
+    background: rgba(218, 41, 28, 0.80);
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#form-container h2 {
+    margin-top: 0;
+}
+
+.question {
+    margin-bottom: 10px;
+}
+
+.question input,
+.question select,
+.question textarea {
+    margin-left: 10px;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.btn_primary {
+    width: 240px;
+    height: 48px;
+    background: rgba(224, 225, 224, 0.70);
+    color: #363636;
+    font-family: 'Kurale', serif;
+    border: 1px solid;
+}
+
+.img_btn {
+    width: 24px;
+    height: 24px;
+}

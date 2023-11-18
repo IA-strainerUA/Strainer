@@ -4,246 +4,156 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario de Predicción de Deserción</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        #form-container {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 600px;
-            width: 100%;
-            text-align: left;
-        }
-
-        #form-container h2 {
-            margin-top: 0;
-        }
-
-        .question {
-            margin-bottom: 10px;
-        }
-
-        .question input,
-        .question select {
-            margin-left: 10px;
-        }
-
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ff0000;
-        }
-    </style>
+    <link rel="stylesheet" href="./static/css/form_style.css">
 </head>
 
 <body>
-    <form id="form-container" method="POST" enctype="application/json" action="{% url 'procesar_formulario' %}">
-        {% csrf_token %}
-        <h2>Formulario de Predicción de Deserción</h2>
-        <div class="question">
-            <label>1. ¿Ha pensado en dejar la carrera?</label>
-            <label><input type="radio" name="1" value="1"> Sí</label>
-            <label><input type="radio" name="1" value="0"> No</label>
+    <section class="resultado">
+        <div class="cabecera">
+            <span>Strainer UA</span>
+            <span class="txt_centro">Análisis de estudiantes de la <br>Universidad Autónoma de Chile</span>
+            <img class="img_cabecera" src="https://i.imgur.com/gmuTmLx.png" />
         </div>
-        <div class="question">
-            <label>2. ¿Ha pensado en dejarla por Factor Económico?</label>
-            <label><input type="radio" name="2" value="1"> Sí</label>
-            <label><input type="radio" name="2" value="0"> No</label>
+        <div class="menu">
+            <div>
+                <button class="btn_primary"><img class="img_btn" src="https://i.imgur.com/Hsdih7P.png">Home</button>
+                <button class="btn_primary"><img class="img_btn" src="https://i.imgur.com/QXUGL1H.png">Ingresar Formulario</button>
+                <button class="btn_primary"><img class="img_btn" src="https://i.imgur.com/WT9Ih8e.png">Cargar Excel</button>
+            </div>
+            <button class="btn_primary"><img class="img_btn" src="https://i.imgur.com/7gWa2sO.png">Cerrar Sesión</button>
         </div>
-        <div class="question">
-            <label>3. ¿Ha pensado en dejarla por Factor Salud Mental?</label>
-            <label><input type="radio" name="3" value="1"> Sí</label>
-            <label><input type="radio" name="3" value="0"> No</label>
+        <div class="contenido">
+            <!-- Contenedor principal centrado -->
+            <div class="center-container">
+                <!-- Mensaje encima del formulario -->
+                <div id="mensaje-container">
+                    <p>Estimado docente, debe responder todas las preguntas y debe recordar que la información que ingresa es confidencial al igual que la predicción final. Sea cauteloso.</p>
+                </div>
+                <!-- Formulario dentro del recuadro -->
+                <div id="formulario-container">
+                    <form id="form-container" method="POST" enctype="application/json" action="{% url 'procesar_formulario' %}">
+                        {% csrf_token %}
+                        <h2>Formulario de Predicción de Deserción</h2>
+                        <div class="question">
+                            <label>1. ¿Ha pensado en dejar la carrera?</label>
+                            <label><input type="radio" name="1" value="1"> Sí</label>
+                            <label><input type="radio" name="1" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>2. ¿Ha pensado en dejarla por Factor Económico?</label>
+                            <label><input type="radio" name="2" value="1"> Sí</label>
+                            <label><input type="radio" name="2" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>3. ¿Ha pensado en dejarla por Factor Salud Mental?</label>
+                            <label><input type="radio" name="3" value="1"> Sí</label>
+                            <label><input type="radio" name="3" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>4. ¿Ha pensado en dejarla por Falta de Motivación?</label>
+                            <label><input type="radio" name="4" value="1"> Sí</label>
+                            <label><input type="radio" name="4" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>5. ¿Ha pensado en dejarla por Otro Motivo?</label>
+                            <label><input type="radio" name="5" value="1"> Sí</label>
+                            <label><input type="radio" name="5" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>6. ¿Cuantos Años sabáticos se tomó antes de entrar a la Universidad?</label>
+                            <input type="text" name="6" placeholder="Ingrese un valor entre 1 y 100">
+                        </div>
+                        <div class="question">
+                            <label>7. ¿Qué edad cumplió el año que entró a estudiar?</label>
+                            <input type="text" name="7" placeholder="Ingrese un valor entre 1 y 100">
+                        </div>
+                        <div class="question">
+                            <label>8. Ciudad o Comuna de origen</label>
+                            <select name="8">
+                                <option value="0">Talca</option>
+                                <option value="1">Santiago</option>
+                                <option value="2">Temuco</option>
+                                <option value="3">Otro</option>
+                            </select>
+                        </div>
+                        <div class="question">
+                            <label>9. Tipo de residencia</label>
+                            <select name="9">
+                                <option value="0">Arrienda</option>
+                                <option value="1">Vive pero no arrienda</option>
+                                <option value="2">Viaja para estudiar [Vive fuera de la ciudad]</option>
+                            </select>
+                        </div>
+                        <div class="question">
+                            <label>10. Arrienda</label>
+                            <label><input type="radio" name="10" value="1"> Sí</label>
+                            <label><input type="radio" name="10" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>11. ¿Tiene a alguien que dependa de usted?</label>
+                            <label><input type="radio" name="11" value="1"> Sí</label>
+                            <label><input type="radio" name="11" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>12. ¿Sus padres o tutores apoyan sus estudios?</label>
+                            <label><input type="radio" name="12" value="1"> Sí</label>
+                            <label><input type="radio" name="12" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>13. ¿Tiene acceso a recursos de aprendizaje adecuados?</label>
+                            <label><input type="radio" name="13" value="1"> Sí</label>
+                            <label><input type="radio" name="13" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>14. ¿Ha experimentado problemas de salud mental, estrés, ansiedad y/o depresión?</label>
+                            <label><input type="radio" name="14" value="1"> Sí</label>
+                            <label><input type="radio" name="14" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>15. ¿Tiene que trabajar para mantener a su familia?</label>
+                            <label><input type="radio" name="15" value="1"> Sí</label>
+                            <label><input type="radio" name="15" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>16. ¿Puede hablar con alguien cuando se siente abrumado?</label>
+                            <label><input type="radio" name="16" value="1"> Sí</label>
+                            <label><input type="radio" name="16" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>17. En caso de tener que costear la carrera, ¿Le genera un problema económico a su núcleo
+                                familiar?</label>
+                            <label><input type="radio" name="17" value="1"> Sí</label>
+                            <label><input type="radio" name="17" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>18. ¿Tiene amigos en la universidad con los que se sienta cómodo?</label>
+                            <label><input type="radio" name="18" value="1"> Sí</label>
+                            <label><input type="radio" name="18" value="0"> No</label>
+                        </div>
+                        <div class="question">
+                            <label>19. Tipo de financiamiento</label>
+                            <label><input type="checkbox" name="19" value="1"> Crédito</label>
+                            <label><input type="checkbox" name="19" value="2"> Gratuidad</label>
+                            <label><input type="checkbox" name="19" value="3"> Beca</label>
+                        </div>
+                        <div class="question">
+                            <label>20. ¿Tiene un interés genuino en la carrera que escogió?</label>
+                            <label><input type="radio" name="20" value="1"> Sí</label>
+                            <label><input type="radio" name="20" value="0"> No</label>
+                        </div>
+                        <button onclick="calcularProbabilidad()">Calcular</button>
+                        <div class="result" id="result-container">
+                            {% if probabilidad %}
+                                <p>La probabilidad de deserción es: {{ probabilidad }}%</p>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="question">
-            <label>4. ¿Ha pensado en dejarla por Falta de Motivación?</label>
-            <label><input type="radio" name="4" value="1"> Sí</label>
-            <label><input type="radio" name="4" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>5. ¿Ha pensado en dejarla por Otro Motivo?</label>
-            <label><input type="radio" name="5" value="1"> Sí</label>
-            <label><input type="radio" name="5" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>6. ¿Cuantos Años sabáticos se tomó antes de entrar a la Universidad?</label>
-            <input type="text" name="6" placeholder="Ingrese un valor entre 1 y 100">
-        </div>
-        <div class="question">
-            <label>7. ¿Qué edad cumplió el año que entró a estudiar?</label>
-            <input type="text" name="7" placeholder="Ingrese un valor entre 1 y 100">
-        </div>
-        <div class="question">
-            <label>8. Ciudad o Comuna de origen</label>
-            <select name="8">
-                <option value="0">Talca</option>
-                <option value="1">Santiago</option>
-                <option value="2">Temuco</option>
-                <option value="3">Otro</option>
-            </select>
-        </div>
-        <div class="question">
-            <label>9. Tipo de residencia</label>
-            <select name="9">
-                <option value="0">Arrienda</option>
-                <option value="1">Vive pero no arrienda</option>
-                <option value="2">Viaja para estudiar [Vive fuera de la ciudad]</option>
-            </select>
-        </div>
-        <div class="question">
-            <label>10. Arrienda</label>
-            <label><input type="radio" name="10" value="1"> Sí</label>
-            <label><input type="radio" name="10" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>11. ¿Tiene a alguien que dependa de usted?</label>
-            <label><input type="radio" name="11" value="1"> Sí</label>
-            <label><input type="radio" name="11" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>12. ¿Sus padres o tutores apoyan sus estudios?</label>
-            <label><input type="radio" name="12" value="1"> Sí</label>
-            <label><input type="radio" name="12" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>13. ¿Tiene acceso a recursos de aprendizaje adecuados?</label>
-            <label><input type="radio" name="13" value="1"> Sí</label>
-            <label><input type="radio" name="13" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>14. ¿Ha experimentado problemas de salud mental, estrés, ansiedad y/o depresión?</label>
-            <label><input type="radio" name="14" value="1"> Sí</label>
-            <label><input type="radio" name="14" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>15. ¿Tiene que trabajar para mantener a su familia?</label>
-            <label><input type="radio" name="15" value="1"> Sí</label>
-            <label><input type="radio" name="15" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>16. ¿Puede hablar con alguien cuando se siente abrumado?</label>
-            <label><input type="radio" name="16" value="1"> Sí</label>
-            <label><input type="radio" name="16" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>17. En caso de tener que costear la carrera, ¿Le genera un problema económico a su núcleo
-                familiar?</label>
-            <label><input type="radio" name="17" value="1"> Sí</label>
-            <label><input type="radio" name="17" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>18. ¿Tiene amigos en la universidad con los que se sienta cómodo?</label>
-            <label><input type="radio" name="18" value="1"> Sí</label>
-            <label><input type="radio" name="18" value="0"> No</label>
-        </div>
-        <div class="question">
-            <label>19. Tipo de financiamiento</label>
-            <label><input type="checkbox" name="19" value="1"> Crédito</label>
-            <label><input type="checkbox" name="19" value="2"> Gratuidad</label>
-            <label><input type="checkbox" name="19" value="3"> Beca</label>
-        </div>
-        <div class="question">
-            <label>20. ¿Tiene un interés genuino en la carrera que escogió?</label>
-            <label><input type="radio" name="20" value="1"> Sí</label>
-            <label><input type="radio" name="20" value="0"> No</label>
-        </div>
-        <button onclick="calcularProbabilidad()">Calcular</button>
-        <div class="result" id="result-container">
-            {% if probabilidad %}
-                <p>La probabilidad de deserción es: {{ probabilidad }}%</p>
-            {% endif %}
-        </div>
-    </form>
-
+    </section>
     <script>
-        // function calcularProbabilidad() {
-        //     // Obtener el token CSRF
-        //     const csrftoken = getCookie('csrftoken');
-        //     const answers = {};
-        //     const radios = document.querySelectorAll('input[type="radio"]:checked');
-        //     radios.forEach(radio => {
-        //         const questionNumber = radio.name.replace('question', '');
-        //         answers[questionNumber] = radio.value;
-        //     });
-
-        //     const textInputs = document.querySelectorAll('input[type="text"]');
-        //     textInputs.forEach(input => {
-        //         const questionNumber = input.name.replace('question', '');
-        //         answers[questionNumber] = input.value;
-        //     });
-
-        //     const selects = document.querySelectorAll('select');
-        //     selects.forEach(select => {
-        //         const questionNumber = select.name.replace('question', '');
-        //         answers[questionNumber] = select.value;
-        //     });
-
-        //     // Procesar Tipo de financiamiento
-        //     const tipoFinanciamientoCheckboxes = document.querySelectorAll('input[type="checkbox"][name="question19"]:checked');
-        //     if (tipoFinanciamientoCheckboxes.length === 0) {
-        //         answers['19'] = '0'; // Si no se ha seleccionado ninguna opción
-        //     } else {
-        //         let combinedValue = '';
-        //         tipoFinanciamientoCheckboxes.forEach(checkbox => {
-        //             combinedValue += checkbox.value;
-        //         });
-        //         answers['19'] = combinedValue;
-        //     }
-
-        //     // Convertir a enteros si es posible
-        //     for (let [key, value] of Object.entries(answers)) {
-        //         const parsedValue = parseInt(value);
-        //         if (!isNaN(parsedValue)) {
-        //             answers[key] = parsedValue;
-        //         }
-        //     }
-
-            /* fetch('prediccion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken, // Asegúrate de pasar el token CSRF en la solicitud
-                },
-                body: JSON.stringify(answers),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const resultContainer = document.getElementById('result-container');
-                    resultContainer.textContent = `La probabilidad de deserción es de: ${data.probabilidad}%`;
-                });
-            */
-        // }
-
-        // // Función para obtener el token CSRF de las cookies
-        // function getCookie(name) {
-        //     let cookieValue = null;
-        //     if (document.cookie && document.cookie !== '') {
-        //         const cookies = document.cookie.split(';');
-        //         for (let i = 0; i < cookies.length; i++) {
-        //             const cookie = cookies[i].trim();
-        //             if (cookie.startsWith(name + '=')) {
-        //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     return cookieValue;
-        // }
-
-        function calcularProbabilidad() 
-        {
+        function calcularProbabilidad() {
             const csrftoken = getCookie('csrftoken');
             const formData = new FormData(document.getElementById('form-container'));
 
@@ -254,13 +164,13 @@
                 },
                 body: formData,
             })
-            .then(response => response.json())
-            .then(data => {
-                const resultContainer = document.getElementById('result-container');
-                resultContainer.innerHTML = `<p>La probabilidad de deserción es: ${data.probabilidad}%</p>`;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    const resultContainer = document.getElementById('result-container');
+                    resultContainer.innerHTML = `<p>La probabilidad de deserción es: ${data.probabilidad}%</p>`;
+                });
         }
-        // Función para obtener el token CSRF de las cookies
+
         function getCookie(name) {
             let cookieValue = null;
             if (document.cookie && document.cookie !== '') {
@@ -275,6 +185,13 @@
             }
             return cookieValue;
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const formularioContainer = document.getElementById('formulario-container');
+            formularioContainer.addEventListener('scroll', function (event) {
+                event.preventDefault(); // Evitar el comportamiento predeterminado de scroll
+            });
+        });
     </script>
 </body>
 
