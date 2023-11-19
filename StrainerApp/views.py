@@ -14,6 +14,8 @@ import time
 def index(request):
     return render(request, 'index.html', {'probabilidad': None}) 
 
+
+
 def procesar_prediccion(datos_del_formulario):
     file_path = 'dataset/datos.xlsx'
     data = pd.read_excel(file_path)
@@ -58,19 +60,22 @@ def procesar_prediccion(datos_del_formulario):
 #             return render(request, 'resultados.html', {'probabilidad': None})
 
 def procesar_formulario(request):
-    if request.method == 'POST':
-        data = request.POST.dict()
-        data.pop('csrfmiddlewaretoken')
+    if 'irhome' in request.POST and request.method == 'POST':
+        return render(request, 'home.html', {'probabilidad': None}) 
+    else:    
+        if request.method == 'POST':
+            data = request.POST.dict()
+            data.pop('csrfmiddlewaretoken')
 
-        # Puedes imprimir los datos para verificar
-        probabilidad = procesar_prediccion(data)
+            # Puedes imprimir los datos para verificar
+            probabilidad = procesar_prediccion(data)
 
-        # Por ahora, devolvemos un valor de ejemplo
+            # Por ahora, devolvemos un valor de ejemplo
 
-        return render(request, 'resultados.html', {"probabilidad": probabilidad})
-    else:
-        # Devuelve una respuesta vacía o maneja el caso de GET
-        return JsonResponse({})
+            return render(request, 'resultados.html', {"probabilidad": probabilidad})
+        else:
+            # Devuelve una respuesta vacía o maneja el caso de GET
+            return JsonResponse({})
 
 def resultados(request):
     return render(request, 'resultados.html', {"probabilidad": 1})
