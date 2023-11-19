@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background: #F0F3FA;
+    overflow: hidden;
 }
 
 .cabecera {
@@ -39,6 +40,7 @@ body {
     margin: 0 auto; /* Centra el contenido horizontalmente */
 }
 
+
 #formulario-container {
     background-color: #E0E1E0B2;
     background-repeat: no-repeat;
@@ -49,15 +51,16 @@ body {
     padding: 20px;
     text-align: left;
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 350px;
     padding: 0 20px; /* Agrega relleno en los lados */
+
 }
 
 
 .center-container {
     width: 80%;
     position: absolute;
-    top: 70%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 100%; /* Ajusta según tu preferencia */

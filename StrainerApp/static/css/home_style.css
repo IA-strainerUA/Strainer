@@ -62,17 +62,7 @@ body {
     margin-bottom: 50px; /* Ajustado para dar más espacio entre texto y botones */
 }
 
-.boton-1, .boton-2, .boton-3 {
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 80%; /* Cambiado a porcentaje para mayor flexibilidad */
-    max-width: 500px; /* Establece un ancho máximo */
-    cursor: pointer;
-    border-radius: 46.5px;
-    border: 0.375px solid;
-    color: #363636;
-    margin-right: 10%;
-}
+
 
 .logo {
     position: fixed;
@@ -85,6 +75,16 @@ body {
     font-family: 'Kurale', serif;
     font-size: 37.5px;
     display: flex;
+    margin-bottom: 20px; /* Ajustado para dar más espacio entre los botones */
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+    cursor: pointer;
+    border-radius: 46.5px;
+    border: 0.375px solid;
+    color: #363636;
+    margin-right: 10%;
+    
 }
 
 .boton-1 {
