@@ -14,6 +14,8 @@ import time
 def index(request):
     return render(request, 'index.html', {'probabilidad': None}) 
 
+def home(request):
+    return render(request, 'home.html')
 
 
 def procesar_prediccion(datos_del_formulario):

@@ -1,22 +1,29 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Kurale', serif ;
+    font-family: 'Kurale', serif;
+    overflow: hidden; /* Evita el desplazamiento vertical en el cuerpo */
 }
 
 .contenedor-principal {
-    margin: 20px; /* Añade margen al contenedor principal */
+    height: 100vh; /* Establece la altura al 100% de la altura de la vista */
     display: flex;
+    margin:5px;
 }
 
 .imagen-contenedor {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+
 }
 
 .imagen2 {
-    width: 100%;
+    max-width: 100%; /* Ajustado para ocupar el ancho disponible */
     height: auto;
-    max-width: 1000px;
+    max-height: 100vh; /* Ajustado para ocupar el alto disponible */
 }
 
 .texto-boton-contenedor {
@@ -26,27 +33,25 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+    overflow-y: initial; /* Añade desplazamiento vertical si el contenido es demasiado grande */
 }
 
 .texto-contenedor {
-    margin: 20px;
+     /* Ajustado para dar más espacio en la parte superior */
+    height: auto;
+    max-height: 50vh;
+    margin-right: 20%;
 }
 
 .texto-bienvenida {
-    margin-bottom: 50px;
     font-size: 37.5px;
-    position: relative;
-    top: -150px;
 }
 
 .texto-opcion {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: left;
-    
     font-size: 45px;
-
 }
 
 .botones-contenedor {
@@ -54,66 +59,62 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 37.5px;
+    margin-bottom: 50px; /* Ajustado para dar más espacio entre texto y botones */
 }
 
-.boton-1,.boton-2,.boton-3 {
+.boton-1, .boton-2, .boton-3 {
     margin-bottom: 20px;
     padding: 10px;
-    width: 500px;
-    height: 78.625px;
+    width: 80%; /* Cambiado a porcentaje para mayor flexibilidad */
+    max-width: 500px; /* Establece un ancho máximo */
     cursor: pointer;
     border-radius: 46.5px;
     border: 0.375px solid;
-    flex-shrink: 0;
-    color: #363636
-    
-    
-    
-    
+    color: #363636;
+    margin-right: 10%;
 }
-.logo{
+
+.logo {
     position: fixed;
     top: 0;
     right: 0;
     padding: 5px;
 }
 
-.boton-1{
-    font-family: 'Kurale', serif ;
+.boton-1, .boton-2, .boton-3 {
+    font-family: 'Kurale', serif;
     font-size: 37.5px;
     display: flex;
-    
+}
+
+.boton-1 {
     background: #DCE359;
 }
-.boton-2{
-    font-family: 'Kurale', serif ;
-    font-size: 37.5px;
-    display: flex;
+
+.boton-2 {
     background: rgba(0, 0, 0, 0.25);
 }
-.boton-3{
-    font-family: 'Kurale', serif ;
-    font-size: 37.5px;
+
+.boton-3 {
     background: #F47559;
 }
 
-.boton-1 img{
-    width: 62.207px;
-    height: 62.208px;
+.boton-1 img, .boton-2 img {
+    width: 20%; /* Ajustado a porcentaje */
+    height: auto;
     transform: rotate(10deg);
     position: relative;
-    left: 10px; 
-    
+    left: 2%; /* Ajustado a porcentaje */
 }
 
-.boton-2 img{
-    width: 62.207px;
-    height: 62.208px;
-    transform: rotate(10deg);
-    position: relative;
-    left: 20px; 
-    
-    
+@media screen and (max-width: 768px) {
+    /* Estilos específicos para pantallas más pequeñas */
+    .texto-bienvenida {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .boton-1, .boton-2, .boton-3 {
+        font-size: 15px;
+    }
 }
-
-
